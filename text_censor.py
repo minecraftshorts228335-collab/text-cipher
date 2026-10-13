@@ -17,7 +17,7 @@ def caesar_cipher(text, shift):
 
 # --- 1. Подготовка: список слов и исходный текст ---
 words_to_hide = ["secret", "password", "spoiler"]
-text = "A secret note. password, then secret. secret secret artist"
+text = "Hello! This secret project has a password. Don't read the spoiler, it's a secret!"
 shift = 3
 
 # Сохраняем оригинал для отчёта, а работать будем с копией
@@ -36,7 +36,7 @@ for word in words_to_hide:
 
         end_idx = idx + len(word)
 
-        # Проверка границ слова (чтобы часть слова, например art в artist, не заменялась)[cite: 8, 11]
+        # Проверка границ слова (чтобы часть слова, например art в artist, не заменялась)
         is_start_bound = (idx == 0) or (not processed_text[idx - 1].isalnum())
         is_end_bound = (end_idx == len(processed_text)) or (not processed_text[end_idx].isalnum())
 
@@ -44,7 +44,7 @@ for word in words_to_hide:
             original_word = processed_text[idx:end_idx]
             encrypted_word = caesar_cipher(original_word, shift)
 
-            # Заменяем слово на зашифрованное[cite: 8]
+            # Заменяем слово на зашифрованное
             processed_text = processed_text[:idx] + encrypted_word + processed_text[end_idx:]
 
             i = idx + len(encrypted_word)
@@ -86,7 +86,7 @@ for word in words_to_hide:
 print("--- ОТЧЁТ О СОВПАДЕНИЯХ ---")
 total_found = 0
 for word, count in stats.items():
-    print(f"{word}: {count}")[cite: 10]
+    print(f"{word}: {count}")
     total_found += count
 
-print(f"Всего найдено: {total_found}")[cite: 10]
+print(f"Всего найдено: {total_found}")
