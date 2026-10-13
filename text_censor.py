@@ -12,3 +12,7 @@ def caesar_cipher(text, shift):
         else:
             result.append(char)
     return ''.join(result)
+
+
+words_to_hide = ["secret", "password", "spoiler"]
+text = "A secret note. password, then secret."
